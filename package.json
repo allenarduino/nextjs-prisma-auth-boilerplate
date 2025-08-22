@@ -23,7 +23,9 @@
     "next-auth": "^5.0.0-beta.29",
     "prisma": "^6.14.0",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "resend": "^6.0.1",
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
