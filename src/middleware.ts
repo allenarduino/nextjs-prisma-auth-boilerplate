@@ -5,7 +5,7 @@ export default auth((req) => {
     const { pathname } = req.nextUrl;
 
     // Public routes
-    const publicRoutes = ['/', '/auth/signin', '/auth/signup'];
+    const publicRoutes = ['/', '/auth/signin', '/auth/signup', '/auth/forgot-password', '/reset-password'];
     if (publicRoutes.includes(pathname)) {
         // Redirect authenticated users away from auth pages to dashboard
         if (isLoggedIn && (pathname === '/auth/signin' || pathname === '/auth/signup')) {

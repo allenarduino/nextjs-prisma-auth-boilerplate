@@ -146,6 +146,15 @@ export function SignInForm() {
                     {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
                 </div>
 
+                <div className="flex items-center justify-end">
+                    <a
+                        href="/auth/forgot-password"
+                        className="text-sm text-blue-600 hover:text-blue-500"
+                    >
+                        Forgot your password?
+                    </a>
+                </div>
+
                 {message && (
                     <div className={`p-3 rounded-md ${message.includes('successful') ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
                         }`}>
