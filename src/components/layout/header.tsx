@@ -1,10 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/use-auth';
 
 export function Header() {
     const { isAuthenticated, signOut } = useAuth();
+    const pathname = usePathname();
+
+    // Hide header on dashboard routes
+    if (pathname?.startsWith('/dashboard')) {
+        return null;
+    }
 
     return (
         <header className="bg-white shadow-sm border-b border-gray-200">
