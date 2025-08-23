@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useAuth } from '@/hooks/use-auth';
 
 export function Header() {
-    const { user, isAuthenticated, signOut } = useAuth();
+    const { isAuthenticated, signOut } = useAuth();
 
     return (
         <header className="bg-white shadow-sm border-b border-gray-200">
@@ -21,9 +21,6 @@ export function Header() {
                     <nav className="flex items-center space-x-4">
                         {isAuthenticated ? (
                             <>
-                                <span className="text-gray-700">
-                                    Welcome, {user?.name || user?.email}
-                                </span>
                                 <button
                                     onClick={() => signOut()}
                                     className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"

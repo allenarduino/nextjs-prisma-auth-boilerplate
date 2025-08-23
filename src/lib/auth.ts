@@ -73,6 +73,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             }
             return session;
         },
+        async redirect({ url, baseUrl }) {
+            // After sign in, redirect to dashboard
+            if (url.startsWith(baseUrl)) {
+                return `${baseUrl}/dashboard`;
+            }
+            // After sign out, redirect to home
+            else if (url.startsWith('/')) {
+                return `${baseUrl}${url}`;
+            }
+            return baseUrl;
+        },
     },
     pages: {
         signIn: '/auth/signin',

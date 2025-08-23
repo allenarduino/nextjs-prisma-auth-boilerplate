@@ -35,6 +35,13 @@ export default function Home() {
           </Link>
         </div>
 
+        {/* Dashboard link for authenticated users */}
+        <div className="mt-8">
+          <p className="text-sm text-gray-500 mb-4">
+            Already have an account? Access your dashboard to manage your profile and settings.
+          </p>
+        </div>
+
         {/* Footer */}
         <div className="mt-16 pt-8 border-t border-gray-200">
           <p className="text-gray-500">
