@@ -62,7 +62,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.role = user.role;
+                token.role = user.role || 'USER';
             }
             return token;
         },
@@ -72,6 +72,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 session.user.role = token.role as string;
             }
             return session;
+        },
+        async signIn({ user, account }) {
+            // For Google OAuth users, ensure they have a role
+            if (account?.provider === 'google' && user) {
+                // Update user role if not set
+                await prisma.user.update({
+                    where: { id: user.id },
+                    data: { role: user.role || 'USER' }
+                });
+            }
+            return true;
         },
         async redirect({ url, baseUrl }) {
             // After sign in, redirect to dashboard
