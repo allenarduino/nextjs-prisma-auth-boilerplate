@@ -12,6 +12,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+            authorization: {
+                params: {
+                    scope: 'openid email profile',
+                },
+            },
         }),
         CredentialsProvider({
             name: 'credentials',
@@ -73,18 +78,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             }
             return session;
         },
-        async signIn({ user, account }) {
+        async signIn({ user, account, profile }) {
+            console.log('SignIn callback:', { user, account, profile });
+
             // For Google OAuth users, ensure they have a role
             if (account?.provider === 'google' && user) {
-                // Update user role if not set
-                await prisma.user.update({
-                    where: { id: user.id },
-                    data: { role: user.role || 'USER' }
-                });
+                try {
+                    // Update user role if not set
+                    await prisma.user.update({
+                        where: { id: user.id },
+                        data: { role: user.role || 'USER' }
+                    });
+                } catch (error) {
+                    console.error('Error in signIn callback:', error);
+                }
             }
             return true;
         },
         async redirect({ url, baseUrl }) {
+            console.log('Redirect callback:', { url, baseUrl });
+
             // After sign in, redirect to dashboard
             if (url.startsWith(baseUrl)) {
                 return `${baseUrl}/dashboard`;
