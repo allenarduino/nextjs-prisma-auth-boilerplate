@@ -81,13 +81,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         async signIn({ user, account, profile }) {
             console.log('SignIn callback:', { user, account, profile });
 
-            // For Google OAuth users, ensure they have a role
+            // For Google OAuth users, ensure they have a role and profile image
             if (account?.provider === 'google' && user) {
                 try {
-                    // Update user role if not set
+                    // Get Google profile image from the profile data
+                    const googleProfile = profile as { picture?: string };
+                    const profileImage = googleProfile?.picture || user.image;
+
+                    // Update user with role and profile image
                     await prisma.user.update({
                         where: { id: user.id },
-                        data: { role: user.role || 'USER' }
+                        data: {
+                            role: user.role || 'USER',
+                            image: profileImage || user.image
+                        }
                     });
                 } catch (error) {
                     console.error('Error in signIn callback:', error);

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '@/hooks/use-auth';
+import { UserAvatar } from '@/components/ui/user-avatar';
 
 export function UserAvatarDropdown() {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,18 +25,14 @@ export function UserAvatarDropdown() {
         <div className="relative" ref={dropdownRef}>
             {/* User Avatar Button */}
             <div className="flex items-center space-x-2 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center ring-2 ring-blue-200">
-                    <span className="text-blue-600 font-semibold text-sm">
-                        {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
-                    </span>
-                </div>
+                <UserAvatar user={user} size="md" className="ring-2 ring-blue-200" />
                 <svg
                     className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                 >
-
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
             </div>
 
@@ -46,11 +43,7 @@ export function UserAvatarDropdown() {
                         {/* User Info Section */}
                         <div className="px-4 py-3 border-b border-gray-200">
                             <div className="flex items-center">
-                                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                    <span className="text-blue-600 font-semibold text-sm">
-                                        {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
-                                    </span>
-                                </div>
+                                <UserAvatar user={user} size="lg" />
                                 <div className="ml-3">
                                     <p className="text-sm font-medium text-gray-900">
                                         {user?.name || 'User'}

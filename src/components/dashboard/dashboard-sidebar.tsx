@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/use-auth';
+import { UserAvatar } from '@/components/ui/user-avatar';
 
 interface DashboardSidebarProps {
     open: boolean;
@@ -49,11 +50,7 @@ export function DashboardSidebar({ open, setOpen }: DashboardSidebarProps) {
                 {/* User info */}
                 <div className="px-6 py-4 border-b border-gray-200 flex-shrink-0">
                     <div className="flex items-center">
-                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                            <span className="text-blue-600 font-semibold text-sm">
-                                {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
-                            </span>
-                        </div>
+                        <UserAvatar user={user} size="lg" />
                         <div className="ml-3">
                             <p className="text-sm font-medium text-gray-900">
                                 {user?.name || 'User'}
