@@ -92,7 +92,7 @@ export function ForgotPasswordForm() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className={`appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 ${errors.email ? 'border-red-300' : 'border-gray-300'
+                        className={`appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary text-gray-900 ${errors.email ? 'border-red-300' : 'border-gray-300'
                             }`}
                         placeholder="Enter your email address"
                     />
@@ -113,7 +113,7 @@ export function ForgotPasswordForm() {
                 <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full cursor-pointer flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full cursor-pointer flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {isLoading ? 'Sending...' : 'Send reset link'}
                 </button>
@@ -122,7 +122,7 @@ export function ForgotPasswordForm() {
             <div className="text-center">
                 <a
                     href="/auth/signin"
-                    className="font-medium text-blue-600 hover:text-blue-500"
+                    className="font-medium text-primary hover:text-primary-hover"
                 >
                     Back to sign in
                 </a>

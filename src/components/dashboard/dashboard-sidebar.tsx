@@ -72,7 +72,7 @@ export function DashboardSidebar({ open, setOpen }: DashboardSidebarProps) {
                                         className={`
                                       flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200
                                       ${isActive
-                                                ? 'bg-blue-100 text-blue-700'
+                                                ? 'bg-primary-light/20 text-primary-dark'
                                                 : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                                             }
                                     `}

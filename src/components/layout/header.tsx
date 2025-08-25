@@ -19,7 +19,7 @@ export function Header() {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex items-center">
-                        <Link href="/" className="text-xl font-bold text-blue-600">
+                        <Link href="/" className="text-xl font-bold text-primary">
                             NextAuth Boilerplate
                         </Link>
                     </div>
@@ -45,7 +45,7 @@ export function Header() {
                                 </Link>
                                 <Link
                                     href="/auth/register"
-                                    className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                                    className="bg-primary text-white hover:bg-primary-hover px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                                 >
                                     Sign Up
                                 </Link>

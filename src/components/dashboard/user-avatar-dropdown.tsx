@@ -25,7 +25,7 @@ export function UserAvatarDropdown() {
         <div className="relative" ref={dropdownRef}>
             {/* User Avatar Button */}
             <div className="flex items-center space-x-2 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-                <UserAvatar user={user} size="md" className="ring-2 ring-blue-200" />
+                <UserAvatar user={user} size="md" className="ring-2 ring-primary-light/30" />
                 <svg
                     className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     fill="none"
